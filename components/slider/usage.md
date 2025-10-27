@@ -543,8 +543,6 @@ Control how frequently pips appear using the `pipsDensity` attribute. Higher val
             <p class="text-sm font-medium mb-2">Density: 5 (More pips)</p>
             <x-ui.slider 
                 x-model="value"
-                :min-value="0"
-                :max-value="100"
                 :pipsDensity="5"
                 tooltips
                 pips
@@ -556,8 +554,8 @@ Control how frequently pips appear using the `pipsDensity` attribute. Higher val
             <x-ui.slider 
                 x-model="value"
                 tooltips
-                pips
                 :pipsDensity="20"
+                pips
                 class="mb-6!"
             />
         </div>
@@ -569,15 +567,15 @@ Control how frequently pips appear using the `pipsDensity` attribute. Higher val
 <!-- More frequent pips -->
 <x-ui.slider 
     wire:model="value"
-    pips
     :pipsDensity="5"
+    pips
 />
 
 <!-- Less frequent pips -->
 <x-ui.slider 
     wire:model="value"
-    pips
     :pipsDensity="20"
+    pips
 />
 ```
 
