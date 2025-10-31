@@ -274,7 +274,7 @@ Define the boundaries of your slider with custom minimum and maximum values.
         tooltips
     />
     <!-- keep highlight -->
-    <p class="mt-2 text-sm text-gray-600">Value: <span x-text="range"></span></p>
+    <p class="mt-2 text-sm text-neutral-600">Value: <span x-text="range"></span></p>
 </x-demo>
 @endblade
 
@@ -287,7 +287,7 @@ Define the boundaries of your slider with custom minimum and maximum values.
     :step="1"
     tooltips
 />
-<p class="mt-2 text-sm text-gray-600">Value: <span wire:text="range"></span></p>
+<p class="mt-2 text-sm text-neutral-600">Value: <span wire:text="range"></span></p>
 ```
 
 ### Step Size
@@ -301,7 +301,7 @@ Control the increment between selectable values using the `step` attribute.
         :fill-track="[true, false]"
         :step="10"
     />
-    <p class="mt-2 text-sm text-gray-600">Value: $<span x-text="price"></span></p>
+    <p class="mt-2 text-sm text-neutral-600">Value: $<span x-text="price"></span></p>
 </x-demo>
 @endblade
 
@@ -311,7 +311,7 @@ Control the increment between selectable values using the `step` attribute.
     :fill-track="[true, false]"
     :step="10"
 />
-<p class="mt-2 text-sm text-gray-600">Value: $<span wire:text="price"></span></p>
+<p class="mt-2 text-sm text-neutral-600">Value: $<span wire:text="price"></span></p>
 ```
 
 ### Decimal Places
@@ -327,7 +327,7 @@ For precise control without step restrictions, specify the number of decimal pla
         :fill-track="[true, false]"
         tooltips
     />
-    <p class="mt-2 text-sm text-gray-600">Value: <span x-text="measurement[0]"></span></p>
+    <p class="mt-2 text-sm text-neutral-600">Value: <span x-text="measurement[0]"></span></p>
 </x-demo>
 @endblade
 
@@ -354,7 +354,7 @@ Add behavioral padding to prevent values from reaching the absolute edges of the
         :range-padding="10"
         tooltips
     />
-    <p class="mt-2 text-sm text-gray-600">Value: <span x-text="value"></span> (Range: 10-90)</p>
+    <p class="mt-2 text-sm text-neutral-600">Value: <span x-text="value"></span> (Range: 10-90)</p>
 </x-demo>
 @endblade
 
@@ -366,7 +366,7 @@ Add behavioral padding to prevent values from reaching the absolute edges of the
     :range-padding="10"
     tooltips
 />
-<p class="mt-2 text-sm text-gray-600">Value: <span wire:text="value"></span> (Range: 10-90)</p>
+<p class="mt-2 text-sm text-neutral-600">Value: <span wire:text="value"></span> (Range: 10-90)</p>
 
 ```
 
@@ -381,7 +381,7 @@ For asymmetric padding, pass an array with start and end values:
         :range-padding="[10, 30]"
         tooltips
     />
-    <p class="mt-2 text-sm text-gray-600">Value: <span x-text="value[0]"></span> (Range: 10-70)</p>
+    <p class="mt-2 text-sm text-neutral-600">Value: <span x-text="value[0]"></span> (Range: 10-70)</p>
 </x-demo>
 @endblade
 
@@ -404,7 +404,7 @@ Create range selectors with multiple draggable handles by providing an array of 
         :step="1"
         :fill-track="[false, true, false]"
     />
-    <p class="mt-2 text-sm text-gray-600">Range: $<span x-text="priceRange[0]"></span> - $<span x-text="priceRange[1]"></span></p>
+    <p class="mt-2 text-sm text-neutral-600">Range: $<span x-text="priceRange[0]"></span> - $<span x-text="priceRange[1]"></span></p>
 </x-demo>
 @endblade
 
@@ -415,7 +415,7 @@ Create range selectors with multiple draggable handles by providing an array of 
     :fill-track="[false, true, false]"
     tooltips
 />
-<p class="mt-2 text-sm text-gray-600">Range: $<span wire:text="priceRange[0]"></span> - $<span wire:text="priceRange[1]"></span></p>
+<p class="mt-2 text-sm text-neutral-600">Range: $<span wire:text="priceRange[0]"></span> - $<span wire:text="priceRange[1]"></span></p>
 ```
 
 ### Handle Constraints
@@ -433,7 +433,7 @@ Ensure handles maintain a minimum distance from each other.
         :fill-track="[false, true, false]"
         tooltips
     />
-    <p class="mt-2 text-sm text-gray-600">Range: <span x-text="range[0]"></span> - <span x-text="range[1]"></span> (Min gap: 10)</p>
+    <p class="mt-2 text-sm text-neutral-600">Range: <span x-text="range[0]"></span> - <span x-text="range[1]"></span> (Min gap: 10)</p>
 </x-demo>
 @endblade
 
@@ -445,7 +445,7 @@ Ensure handles maintain a minimum distance from each other.
     :fill-track="[false, true, false]"
     tooltips
 />
-<p class="mt-2 text-sm text-gray-600">Range: <span wire:text="range[0]"></span> - <span wire:text="range[1]"></span> (Min gap: 10)</p>
+<p class="mt-2 text-sm text-neutral-600">Range: <span wire:text="range[0]"></span> - <span wire:text="range[1]"></span> (Min gap: 10)</p>
 ```
 
 #### Maximum Distance Between Handles
@@ -461,7 +461,7 @@ Limit the maximum distance between handles using the `limit` attribute.
         :fill-track="[false, true, false]"
         tooltips
     />
-    <p class="mt-2 text-sm text-gray-600">Range: <span x-text="range[0]"></span> - <span x-text="range[1]"></span> (Max gap: 30)</p>
+    <p class="mt-2 text-sm text-neutral-600">Range: <span x-text="range[0]"></span> - <span x-text="range[1]"></span> (Max gap: 30)</p>
 </x-demo>
 @endblade
 
@@ -473,7 +473,7 @@ Limit the maximum distance between handles using the `limit` attribute.
     :fill-track="[false, true, false]"
     tooltips
 />
-<p class="mt-2 text-sm text-gray-600">Range: <span wire:text="range[0]"></span> - <span wire:text="range[1]"></span> (Max gap: 30)</p>
+<p class="mt-2 text-sm text-neutral-600">Range: <span wire:text="range[0]"></span> - <span wire:text="range[1]"></span> (Max gap: 30)</p>
 ```
 
 
@@ -917,8 +917,8 @@ Create sliders where certain portions of the track represent different value ran
         pips
         tooltips
     />
-    <p class="mt-6 text-sm text-gray-600">Value (buggy): <span x-text="value"></span></p>
-    <p class="mt-2 text-sm text-gray-600">Value (manually): <span x-text="Number(value).toFixed()"></span></p>
+    <p class="mt-6 text-sm text-neutral-600">Value (buggy): <span x-text="value"></span></p>
+    <p class="mt-2 text-sm text-neutral-600">Value (manually): <span x-text="Number(value).toFixed()"></span></p>
 </x-demo>
 @endblade
 
@@ -931,8 +931,8 @@ Create sliders where certain portions of the track represent different value ran
     pips
     tooltips
 />
-<p class="mt-6 text-sm text-gray-600">Value (buggy): <span wire:text="value"></span></p>
-<p class="mt-2 text-sm text-gray-600">Value (manually): <span wire:text="Number(value).toFixed()"></span></p>
+<p class="mt-6 text-sm text-neutral-600">Value (buggy): <span wire:text="value"></span></p>
+<p class="mt-2 text-sm text-neutral-600">Value (manually): <span wire:text="Number(value).toFixed()"></span></p>
 ```
 
 In this example:
@@ -957,7 +957,7 @@ Control how users interact with the slider using the `behavior` attribute. Avail
         tooltips
         :step="1"
     />
-    <p class="mt-2 text-sm text-gray-600">Try dragging the filled area between handles</p>
+    <p class="mt-2 text-sm text-neutral-600">Try dragging the filled area between handles</p>
 </x-demo>
 @endblade
 
@@ -1023,9 +1023,9 @@ Disable user interaction with the slider.
             "
         />
         <div class="mt-4 text-center">
-            <span class="text-gray-700">Showing products from 
-                <strong>$<span x-text="priceRange[0]"></span></strong> to 
-                <strong>$<span x-text="priceRange[1]"></span></strong>
+            <span class="text-neutral-700">Showing products from 
+                <strong class="text-neutral-950 dark:text-white">$<span  x-text="priceRange[0]"></span></strong> to 
+                <strong class="text-neutral-950 dark:text-white">$<span  x-text="priceRange[1]"></span></strong>
             </span>
         </div>
     </div>
@@ -1053,24 +1053,31 @@ Disable user interaction with the slider.
         });
     "
 />
+ <div class="mt-4 text-center">
+    <span class="text-neutral-700">Showing products from 
+        <strong class="text-neutral-950 dark:text-white">$<span  wire:text="priceRange[0]"></span></strong> to 
+        <strong class="text-neutral-950 dark:text-white">$<span  wire:text="priceRange[1]"></span></strong>
+    </span>
+</div>
 ```
 
 ### Volume Control
 
 @blade
-<x-demo x-data="{ volume: [75] }">
-    <div class="flex items-center gap-4">
-        <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+<x-demo>
+     <div x-data="{ volume: [75] }" class="flex justify-center items-end gap-4 ">
+        <svg class="w-5 h-5 text-neutral-600 mb-4" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" />
         </svg>
         <x-ui.slider 
             x-model="volume"
             tooltips
+            :step="1"
             :fill-track="[true, false]"
             class="flex-1"
             x-init="$slider.formatTooltipUsing((value) => value + '%')"
         />
-        <span class="text-sm text-gray-600 min-w-[3rem]" x-text="volume[0] + '%'"></span>
+        <span class="text-sm text-neutral-600 min-w-[3rem] ml-3 mb-4" x-text="volume + '%'"></span>
     </div>
 </x-demo>
 @endblade
@@ -1101,19 +1108,19 @@ Disable user interaction with the slider.
             :fill-track="[false, true, false]"
             handleVariant="circle"
             x-init="
-                formatTooltipUsing((value) => {
+                $slider.formatTooltipUsing((value) => {
                     const hour = value === 0 ? 12 : (value > 12 ? value - 12 : value);
                     const period = value < 12 ? 'AM' : 'PM';
-                    return hour + ':00 ' + period;
+                    return hour.toFixed() + ':00 ' + period;
                 });
-                formatPipValueUsing((value) => {
+                $slider.formatPipValueUsing((value) => {
                     if (value === 0) return '12AM';
                     if (value === 12) return '12PM';
                     const hour = value > 12 ? value - 12 : value;
                     const period = value < 12 ? 'AM' : 'PM';
-                    return hour + period;
+                    return hour.toFixed() + period;
                 });
-                filterPipsUsing((value, type) => {
+                $slider.filterPipsUsing((value, type) => {
                     if (value === 0 || value === 12) return 1;
                     if (value % 6 === 0) return 2;
                     return 0;
@@ -1121,19 +1128,19 @@ Disable user interaction with the slider.
             "
         />
         <div class="mt-4 text-center">
-            <span class="text-gray-700">Meeting available from 
+            <span class="text-neutral-700">Meeting available from 
                 <strong x-text="
                     (() => {
                         const h = meetingTime[0] === 0 ? 12 : (meetingTime[0] > 12 ? meetingTime[0] - 12 : meetingTime[0]);
                         const p = meetingTime[0] < 12 ? 'AM' : 'PM';
-                        return h + ':00 ' + p;
+                        return h.toFixed() + ':00 ' + p;
                     })()
                 "></strong> to 
                 <strong x-text="
                     (() => {
                         const h = meetingTime[1] === 0 ? 12 : (meetingTime[1] > 12 ? meetingTime[1] - 12 : meetingTime[1]);
                         const p = meetingTime[1] < 12 ? 'AM' : 'PM';
-                        return h + ':00 ' + p;
+                        return h.toFixed() + ':00 ' + p;
                     })()
                 "></strong>
             </span>
@@ -1199,8 +1206,8 @@ Disable user interaction with the slider.
             "
         />
         <div class="mt-4 text-center">
-            <div class="text-3xl" x-text="'⭐'.repeat(Math.floor(rating[0])) + (rating[0] % 1 ? '½' : '')"></div>
-            <div class="text-gray-600 mt-2" x-text="rating[0] + ' out of 5 stars'"></div>
+            <div class="text-3xl" x-text="'⭐'.repeat(Math.floor(rating)) + (rating % 1 ? '½' : '')"></div>
+            <div class="text-neutral-600 mt-2" x-text="rating + ' out of 5 stars'"></div>
         </div>
     </div>
 </x-demo>
@@ -1254,11 +1261,11 @@ Disable user interaction with the slider.
             "
         />
         <div class="mt-4 text-center">
-            <span class="text-2xl font-bold" x-text="temperature[0] + '°F'"></span>
-            <div class="text-sm text-gray-600 mt-1">
-                <span x-show="temperature[0] < 65">❄️ Cool</span>
-                <span x-show="temperature[0] >= 65 && temperature[0] < 72">😊 Comfortable</span>
-                <span x-show="temperature[0] >= 72">🔥 Warm</span>
+            <span class="text-2xl font-bold" x-text="temperature + '°F'"></span>
+            <div class="text-sm text-neutral-600 mt-1">
+                <span x-show="temperature < 65">❄️ Cool</span>
+                <span x-show="temperature >= 65 && temperature < 72">😊 Comfortable</span>
+                <span x-show="temperature >= 72">🔥 Warm</span>
             </div>
         </div>
     </div>
@@ -1286,6 +1293,14 @@ Disable user interaction with the slider.
         });
     "
 />
+ <div class="mt-4 text-center">
+    <span class="text-2xl font-bold" x-text="temperature + '°F'"></span>
+    <div class="text-sm text-neutral-600 mt-1">
+        <span x-show="temperature < 65">❄️ Cool</span>
+        <span x-show="temperature >= 65 && temperature < 72">😊 Comfortable</span>
+        <span x-show="temperature >= 72">🔥 Warm</span>
+    </div>
+</div>
 ```
 
 ### Budget Allocation
@@ -1329,7 +1344,7 @@ Disable user interaction with the slider.
                 <div x-text="'€' + (budgets[2] - budgets[1])"></div>
             </div>
             <div>
-                <div class="font-semibold text-gray-600">Reserve</div>
+                <div class="font-semibold text-neutral-600">Reserve</div>
                 <div x-text="'€' + (10000 - budgets[2])"></div>
             </div>
         </div>
@@ -1358,6 +1373,24 @@ Disable user interaction with the slider.
         });
     "
 />
+<div class="mt-6 grid grid-cols-4 gap-4 text-center text-sm">
+    <div>
+        <div class="font-semibold text-blue-600">Marketing</div>
+        <div x-text="'€' + budgets[0]"></div>
+    </div>
+    <div>
+        <div class="font-semibold text-green-600">Development</div>
+        <div x-text="'€' + (budgets[1] - budgets[0])"></div>
+    </div>
+    <div>
+        <div class="font-semibold text-purple-600">Operations</div>
+        <div x-text="'€' + (budgets[2] - budgets[1])"></div>
+    </div>
+    <div>
+        <div class="font-semibold text-neutral-600">Reserve</div>
+        <div x-text="'€' + (10000 - budgets[2])"></div>
+    </div>
+</div>
 ```
 
 ## Component Props
