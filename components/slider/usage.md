@@ -230,6 +230,13 @@ Use the `$slider.formatTooltipUsing()` method via `x-init` to customize tooltip 
 />
 ```
 
+##### Calculating the step Value for a 24-Hour Slider
+
+> When you want a slider to represent time in 24 hours, and you want each step to represent a fixed interval  (like 15 minutes, 30 minutes, etc.), you can calculate the step value in hours using this formula:
+`step = interval in minutes / 60` example of 15 min per step : `s = 15 / 60 = 0.25`
+	​
+
+
 #### Percentage Format Example
 
 @blade
@@ -267,7 +274,7 @@ Define the boundaries of your slider with custom minimum and maximum values.
         tooltips
     />
     <!-- keep highlight -->
-    <p class="mt-2 text-sm text-gray-600">Value: <span x-text="range[0]"></span></p>
+    <p class="mt-2 text-sm text-gray-600">Value: <span x-text="range"></span></p>
 </x-demo>
 @endblade
 
@@ -280,7 +287,7 @@ Define the boundaries of your slider with custom minimum and maximum values.
     :step="1"
     tooltips
 />
-/>
+<p class="mt-2 text-sm text-gray-600">Value: <span wire:text="range"></span></p>
 ```
 
 ### Step Size
@@ -294,7 +301,7 @@ Control the increment between selectable values using the `step` attribute.
         :fill-track="[true, false]"
         :step="10"
     />
-    <p class="mt-2 text-sm text-gray-600">Value: $<span x-text="price[0]"></span></p>
+    <p class="mt-2 text-sm text-gray-600">Value: $<span x-text="price"></span></p>
 </x-demo>
 @endblade
 
@@ -304,6 +311,7 @@ Control the increment between selectable values using the `step` attribute.
     :fill-track="[true, false]"
     :step="10"
 />
+<p class="mt-2 text-sm text-gray-600">Value: $<span wire:text="price"></span></p>
 ```
 
 ### Decimal Places
@@ -342,10 +350,11 @@ Add behavioral padding to prevent values from reaching the absolute edges of the
     <x-ui.slider 
         x-model="value"
         :fill-track="[true, false]"
+        :step="1"
         :range-padding="10"
         tooltips
     />
-    <p class="mt-2 text-sm text-gray-600">Value: <span x-text="value[0]"></span> (Range: 10-90)</p>
+    <p class="mt-2 text-sm text-gray-600">Value: <span x-text="value"></span> (Range: 10-90)</p>
 </x-demo>
 @endblade
 
@@ -353,9 +362,12 @@ Add behavioral padding to prevent values from reaching the absolute edges of the
 <x-ui.slider 
     wire:model="value"
     :fill-track="[true, false]"
+    :step="1"
     :range-padding="10"
     tooltips
 />
+<p class="mt-2 text-sm text-gray-600">Value: <span wire:text="value"></span> (Range: 10-90)</p>
+
 ```
 
 For asymmetric padding, pass an array with start and end values:
@@ -365,6 +377,7 @@ For asymmetric padding, pass an array with start and end values:
     <x-ui.slider 
         x-model="value"
         :fill-track="[true, false]"
+        :step="1"
         :range-padding="[10, 30]"
         tooltips
     />
@@ -388,6 +401,7 @@ Create range selectors with multiple draggable handles by providing an array of 
 <x-demo x-data="{ priceRange: [20, 75] }">
     <x-ui.slider 
         x-model="priceRange"
+        :step="1"
         :fill-track="[false, true, false]"
     />
     <p class="mt-2 text-sm text-gray-600">Range: $<span x-text="priceRange[0]"></span> - $<span x-text="priceRange[1]"></span></p>
@@ -395,11 +409,13 @@ Create range selectors with multiple draggable handles by providing an array of 
 @endblade
 
 ```html
+ <!-- you may have $priceRange = [20, 75] -->
 <x-ui.slider 
     wire:model="priceRange"
     :fill-track="[false, true, false]"
     tooltips
 />
+<p class="mt-2 text-sm text-gray-600">Range: $<span wire:text="priceRange[0]"></span> - $<span wire:text="priceRange[1]"></span></p>
 ```
 
 ### Handle Constraints
@@ -413,6 +429,7 @@ Ensure handles maintain a minimum distance from each other.
     <x-ui.slider 
         x-model="range"
         :margin="10"
+        :step="1"
         :fill-track="[false, true, false]"
         tooltips
     />
@@ -424,9 +441,11 @@ Ensure handles maintain a minimum distance from each other.
 <x-ui.slider 
     wire:model="range"
     :margin="10"
+    :step="1"
     :fill-track="[false, true, false]"
     tooltips
 />
+<p class="mt-2 text-sm text-gray-600">Range: <span wire:text="range[0]"></span> - <span wire:text="range[1]"></span> (Min gap: 10)</p>
 ```
 
 #### Maximum Distance Between Handles
@@ -438,6 +457,7 @@ Limit the maximum distance between handles using the `limit` attribute.
     <x-ui.slider 
         x-model="range"
         :limit="30"
+        :step="1"
         :fill-track="[false, true, false]"
         tooltips
     />
@@ -449,9 +469,11 @@ Limit the maximum distance between handles using the `limit` attribute.
 <x-ui.slider 
     wire:model="range"
     :limit="30"
+    :step="1"
     :fill-track="[false, true, false]"
     tooltips
 />
+<p class="mt-2 text-sm text-gray-600">Range: <span wire:text="range[0]"></span> - <span wire:text="range[1]"></span> (Max gap: 30)</p>
 ```
 
 
@@ -466,6 +488,7 @@ Add visual markers along the track to help users identify specific values.
 <x-demo x-data="{ value: [50] }">
     <x-ui.slider 
         x-model="value"
+        :step="1"
         pips
     />
 </x-demo>
@@ -474,6 +497,7 @@ Add visual markers along the track to help users identify specific values.
 ```html
 <x-ui.slider 
     wire:model="value"
+    :step="1"
     pips
 />
 ```
@@ -490,19 +514,19 @@ Control how frequently pips appear using the `pipsDensity` attribute. Higher val
             <x-ui.slider 
                 x-model="value"
                 :pipsDensity="5"
+                :step="1"
                 tooltips
                 pips
-                class="mb-6!"
             />
         </div>
         <div>
             <p class="text-sm font-medium mb-2">Density: 20 (Fewer pips)</p>
             <x-ui.slider 
                 x-model="value"
-                tooltips
                 :pipsDensity="20"
+                tooltips
+                :step="1"
                 pips
-                class="mb-6!"
             />
         </div>
     </div>
@@ -514,6 +538,8 @@ Control how frequently pips appear using the `pipsDensity` attribute. Higher val
 <x-ui.slider 
     wire:model="value"
     :pipsDensity="5"
+    tooltips
+    :step="1"
     pips
 />
 
@@ -521,6 +547,8 @@ Control how frequently pips appear using the `pipsDensity` attribute. Higher val
 <x-ui.slider 
     wire:model="value"
     :pipsDensity="20"
+    tooltips
+    :step="1"
     pips
 />
 ```
@@ -562,6 +590,7 @@ Place pips at specific percentage positions along the track.
     <x-ui.slider 
         x-model="value"
         pips
+        :step="25/3"
         pipsMode="positions"
         :pipsValues="[0, 25, 50, 75, 100]"
     />
@@ -572,6 +601,7 @@ Place pips at specific percentage positions along the track.
 <x-ui.slider 
     wire:model="value"
     pips
+    :step="25/3"
     pipsMode="positions"
     :pipsValues="[0, 25, 50, 75, 100]"
 />
@@ -598,6 +628,29 @@ Display a specific number of evenly distributed pips.
     pips
     pipsMode="count"
     :pipsValues="5"
+/>
+```
+this is may intrduce large digits if the path length is divisible by the count so in this case the pip label formatter is required:
+
+@blade
+<x-demo x-data="{ value: [50] }">
+    <x-ui.slider 
+        x-model="value"
+        pips
+        pipsMode="count"
+        :pipsValues="13"
+        x-init="formatPipValueUsing((value) => value.toFixed(2))"
+    />
+</x-demo>
+@endblade
+
+```html
+<x-ui.slider 
+    x-model="value"
+    pips
+    pipsMode="count"
+    :pipsValues="13"
+    x-init="formatPipValueUsing((value) => value.toFixed(2))"
 />
 ```
 
