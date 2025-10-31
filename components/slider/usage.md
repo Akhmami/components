@@ -563,7 +563,8 @@ Display pips at every step interval.
 <x-demo x-data="{ value: [50] }">
     <x-ui.slider 
         x-model="value"
-        :step="10"
+        :step="12"
+        :max-value="96"
         pips
         pipsMode="steps"
         :pipsDensity="1"
@@ -573,8 +574,9 @@ Display pips at every step interval.
 
 ```html
 <x-ui.slider 
-    wire:model="value"
-    :step="10"
+    x-model="value"
+    :step="12"
+    :max-value="96"
     pips
     pipsMode="steps"
     :pipsDensity="1"
@@ -664,6 +666,7 @@ Place pips at exact slider values.
         x-model="value"
         pips
         pipsMode="values"
+        :max-value="150"
         :pipsValues="[0, 20, 40, 60, 80, 100]"
     />
 </x-demo>
@@ -674,6 +677,7 @@ Place pips at exact slider values.
     wire:model="value"
     pips
     pipsMode="values"
+    :max-value="150" <!-- to ilustrate that is value based not percentage-->
     :pipsValues="[0, 20, 40, 60, 80, 100]"
 />
 ```
