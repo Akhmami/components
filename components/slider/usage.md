@@ -641,7 +641,7 @@ this is may intrduce large digits if the path length is divisible by the count s
         pips
         pipsMode="count"
         :pipsValues="13"
-        x-init="formatPipValueUsing((value) => value.toFixed(2))"
+        x-init="$slider.formatPipValueUsing((value) => value.toFixed(2))"
     />
 </x-demo>
 @endblade
@@ -652,7 +652,7 @@ this is may intrduce large digits if the path length is divisible by the count s
     pips
     pipsMode="count"
     :pipsValues="13"
-    x-init="formatPipValueUsing((value) => value.toFixed(2))"
+    x-init="$slider.formatPipValueUsing((value) => value.toFixed(2))"
 />
 ```
 
