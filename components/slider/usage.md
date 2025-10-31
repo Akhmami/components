@@ -684,7 +684,7 @@ Place pips at exact slider values.
 
 ### Custom Pip Label Formatting
 
-Format pip labels using the `formatPipValueUsing()` method.
+Format pip labels using the `$slider.formatPipValueUsing()` method.
 
 @blade
 <x-demo x-data="{ price: [250] }">
@@ -694,7 +694,7 @@ Format pip labels using the `formatPipValueUsing()` method.
         :step="50"
         pips
         pipsMode="steps"
-        x-init="formatPipValueUsing((value) => '$' + value)"
+        x-init="$slider.formatPipValueUsing((value) => '$' + value)"
     />
 </x-demo>
 @endblade
@@ -706,7 +706,7 @@ Format pip labels using the `formatPipValueUsing()` method.
     :step="50"
     pips
     pipsMode="steps"
-    x-init="formatPipValueUsing((value) => '$' + value)"
+    x-init="$slider.formatPipValueUsing((value) => '$' + value)"
 />
 ```
 
@@ -722,16 +722,16 @@ Fine-tune which pips are displayed and their size using `filterPipsUsing()`. Ret
 <x-demo x-data="{ value: [250] }">
     <x-ui.slider 
         x-model="value"
-        :max-value="500"
-        :step="5"
-        pips
         pipsMode="steps"
+        :max-value="500"
         :pipsDensity="1"
         tooltips
+        :step="5"
+        pips
         x-init="
-            formatTooltipUsing((value) => '$' + value.toFixed(0));
-            formatPipValueUsing((value) => '$' + value);
-            filterPipsUsing((value, type) => {
+            $slider.formatTooltipUsing((value) => '$' + value.toFixed(0));
+            $slider.formatPipValueUsing((value) => '$' + value);
+            $slider.filterPipsUsing((value, type) => {
                 if (value < 50) return -1;
                 if (value % 100 === 0) return 1;
                 if (value % 50 === 0) return 2;
@@ -745,12 +745,12 @@ Fine-tune which pips are displayed and their size using `filterPipsUsing()`. Ret
 ```blade
 <x-ui.slider 
     wire:model="budget"
-    :max-value="500"
-    :step="5"
-    pips
     pipsMode="steps"
+    :max-value="500"
     :pipsDensity="1"
     tooltips
+    :step="5"
+    pips
     x-init="
         formatTooltipUsing((value) => '$' + value.toFixed(0));
         formatPipValueUsing((value) => '$' + value);
