@@ -374,6 +374,53 @@ php artisan sheaf:install button input select textarea switch radio
 
 ```
 
+### Updating Components
+
+update individual component with all their dependencies:
+
+```bash
+php artisan sheaf:update component-name
+```
+
+**Examples:**
+
+```bash
+# Update a button component
+php artisan sheaf:update button
+
+# Update a modal component (may include dependencies update)
+php artisan sheaf:update modal
+```
+
+### Removing Components
+Removes one or more Sheaf UI components from your Laravel project, including their files, dependencies, and configuration entries.
+
+#### usage
+```bash
+    php artisan sheaf:remove [name]*
+```
+
+#### Behavior
+The `sheaf:remove` command removes Sheaf UI components from your project and cleans up all associated files and dependencies. The removal process includes:
+
+1. Component verification: Checks if the component exists in resources/views/components/ui/ before attempting removal
+2. File deletion: Removes component directories and files from the UI components directory
+3. Dependency cleanup: Recursively removes internal dependencies (after confirmation) that are no longer used by any remaining components
+4. Helper cleanup: Removes helper components that are no longer needed
+5. Configuration updates: Updates both sheaf.json and sheaf-lock.json to reflect the removed components
+
+The command intelligently tracks component usage across your project. If a removed component was the only one using a particular dependency or helper, those are automatically removed as well (after confirmation).
+
+#### Examples
+**Remove a single component**
+```bash
+php artisan sheaf:remove button
+```
+
+**Remove Multiple components**
+```bash
+php artisan sheaf:remove radio modal select card
+```
 ## Discovering Components
 
 ### List Available Components
@@ -386,13 +433,6 @@ php artisan sheaf:list
 
 ### Filtering Options
 
-```bash
-# List only free components
-php artisan sheaf:list --type=free
-
-# List only premium components
-php artisan sheaf:list --type=premium
-```
 
 
 ### Getting Help
