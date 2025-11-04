@@ -15,8 +15,12 @@ Use the [sheaf artisan command](/docs/guides/cli-installation#content-component-
 ```bash
 php artisan sheaf:install slider
 ```
-
+temporarly yoi need to do this manually
+```shell
+npm install nouislider
+```
 then import the component javascripts:
+
 
 ```js
 // app.js
