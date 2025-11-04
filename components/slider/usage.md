@@ -1,5 +1,5 @@
 ---
-name: 'slider'
+name: slider
 ---
 
 # Slider Component
