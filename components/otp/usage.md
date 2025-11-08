@@ -133,6 +133,7 @@ You can pass individual inputs as a slot and customize them as needed.
         class="max-w-md mx-auto">
         <x-ui.otp 
             x-model="code"
+            :length="5"
         >
             <x-ui.otp.input class="rounded-full m-2" />
             <x-ui.otp.input class="rounded-full m-2"/>
@@ -147,6 +148,7 @@ You can pass individual inputs as a slot and customize them as needed.
 ```html
 <x-ui.otp
     wire:model="code"
+    :length="5"
 >
     <x-ui.otp.input class="rounded-full m-2" />
     <x-ui.otp.input class="rounded-full m-2"/>
@@ -166,8 +168,11 @@ Add visual separators between input groups for better readability (e.g., for pho
         x-data="{
             code: null,
         }" 
-        class="max-w-md mx-auto">
-        <x-ui.otp x-model="code">
+        class="max-w-md mx-auto"
+    >
+        <x-ui.otp x-model="code"
+            :length="6"
+        >
             <x-ui.otp.input />
             <x-ui.otp.input />
             <x-ui.otp.separator/>
@@ -184,6 +189,7 @@ Add visual separators between input groups for better readability (e.g., for pho
 ```html
 <x-ui.otp
     wire:model="code"
+    :length="6"
 >
     <x-ui.otp.input />
     <x-ui.otp.input/>
@@ -272,7 +278,7 @@ When you delete a digit from the middle of the OTP, all subsequent digits automa
             x-model="shiftCode"
             :length="6"
         />
-        <p class="text-sm text-gray-600 mt-2">Place cursor on any digit and press backspace/delete to see the shift effect.</p>
+        <p class="text-sm text-neutral-600 mt-2">Place cursor on any digit and press backspace/delete to see the shift effect.</p>
     </div>
 </x-demo>
 @endblade
@@ -294,7 +300,7 @@ Click anywhere in the OTP input container, even on disabled inputs, to automatic
             x-model="clickCode"
             :length="6"
         />
-        <p class="text-sm text-gray-600 mt-2">Try clicking on grayed-out (disabled) inputs - focus will jump to the next available input.</p>
+        <p class="text-sm text-neutral-600 mt-2">Try clicking on neutraled-out (disabled) inputs - focus will jump to the next available input.</p>
     </div>
 </x-demo>
 @endblade
@@ -332,14 +338,36 @@ Listen for the `otp-complete` event when all digits are filled:
 
 The component automatically handles external state synchronization and can display pre-filled values.
 
+#### with Livewire
+
+in your component class make sure you have defined `$prefilledCode` property with inital `1234` as initial value
 @blade
-<x-demo class="flex justify-center !text-start" x-data="{ prefilledCode: '1234' }">
+<x-demo class="flex justify-center !text-start" x-data="{ prefilledCode: 1234 }">
     <div>
         <label class="block text-sm font-medium mb-2">Pre-filled code</label>
         <x-ui.otp 
             x-model="prefilledCode"
         />
-        <p class="text-sm text-gray-600 mt-2">Current value: <span x-text="prefilledCode"></span></p>
+        <p class="text-sm text-neutral-600 mt-2">Current value: <span x-text="prefilledCode"></span></p>
+    </div>
+</x-demo>
+@endblade
+
+```html
+<div>
+    <x-ui.otp wire:model.live="prefilledCode" />
+    <p class="text-sm text-neutral-600 mt-2">Current value: <span wire:text="prefilledCode"></span></p>
+</div>
+```
+#### with Alpine
+@blade
+<x-demo class="flex justify-center !text-start" x-data="{ prefilledCode: 1234 }">
+    <div>
+        <label class="block text-sm font-medium mb-2">Pre-filled code</label>
+        <x-ui.otp 
+            x-model="prefilledCode"
+        />
+        <p class="text-sm text-neutral-600 mt-2">Current value: <span x-text="prefilledCode"></span></p>
     </div>
 </x-demo>
 @endblade
@@ -347,6 +375,7 @@ The component automatically handles external state synchronization and can displ
 ```html
 <div x-data="{ code: '1234' }">
     <x-ui.otp x-model="code" />
+    <p class="text-sm text-neutral-600 mt-2">Current value: <span x-text="prefilledCode"></span></p>
 </div>
 ```
 
@@ -362,7 +391,7 @@ The component intelligently handles pasted content, filtering valid characters, 
             x-model="pasteCode"
             :length="6"
         />
-        <p class="text-sm text-gray-600 mt-2">The component will extract valid digits and fill the inputs automatically.</p>
+        <p class="text-sm text-neutral-600 mt-2">The component will extract valid digits and fill the inputs automatically.</p>
     </div>
 </x-demo>
 @endblade
