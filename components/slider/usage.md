@@ -29,7 +29,7 @@ import './components/slider.js'
 
 import the css:
 ```css
- /* app.css */
+/* app.css */
 @import './components/slider.css';
 ```
 
