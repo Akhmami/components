@@ -5,7 +5,7 @@ slug: build-advanced-slider-component-tall-stack-the-right-way
 excerpt: HTML range inputs are limiting. Third-party slider libraries break with Livewire. Building from scratch takes forever. Here's how to create a powerful, production-ready slider component that works beautifully with the TALL stack—complete with tooltips, multiple handles, pips, and dead-simple syntax.
 author: mohamed charrafi
 created_at: 11-11-2025
-published_at: 14-11-2025  
+published_at: 12-11-2025  
 category: core component reveal  
 ---
 
