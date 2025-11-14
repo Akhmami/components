@@ -73,7 +73,7 @@
             <div class="flex-shrink-0 flex items-center">
                 <button type="button" class="{{ Arr::toCssClasses($switchClasses) }}"
                     x-bind:class="checked ? '[:where(&)]:bg-neutral-800 [:where(&)]:dark:bg-white {{ $onClass }}' :
-                        '{{ $offClass }} [:where(&)]:bg-neutral-300 [:where(&)]:dark:bg-neutral-950'"
+                        '{{ $offClass }} [:where(&)]:bg-neutral-300 [:where(&)]:dark:bg-0'"
                     x-on:click="checked = !checked" @disabled($disabled) x-bind:aria-checked="checked"
                     role="switch" aria-labelledby="{{ $id }}-label">
                     <span
@@ -95,7 +95,7 @@
                 </button>
 
                 @if ($name)
-                    <input type="hidden" name="{{ $name }}" x-bind:value="checked ? '1' : '0'">
+                    <input type="hidden" name="{{ $name }}" {{ $attributes }} x-bind:value="checked ? '1' : '0'">
                 @endif
             </div>
 
