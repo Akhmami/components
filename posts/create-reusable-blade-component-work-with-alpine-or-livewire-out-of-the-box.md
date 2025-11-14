@@ -54,39 +54,80 @@ Let's say you're building a custom toggle component. Users want to use it like t
 
 ## The Solutions 
 
-### Alpine Modelable API
+### Alpine's Modelable API
 
-alpine has a cool derictive api called `x-modelable` (you can learn about it at [alpine docs](https://alpinejs.dev/directives/modelable)), that bind a isolated state on inner alpine component (can be blade component) to outer component here is an example, also this is the recomended approach in livewire docs in thier [custom form controls](https://livewire.laravel.com/docs/3.x/forms#custom-form-controls)
+Alpine provides a powerful directive called `x-modelable` ([learn more in Alpine docs](https://alpinejs.dev/directives/modelable)) that binds internal state from an Alpine component (including Blade components) to external parent components. This is also the [recommended approach in Livewire's documentation](https://livewire.laravel.com/docs/3.x/forms#custom-form-controls) for building custom form controls.
 
-in a basic level suppose you want to create a custom textarea with extra logic, so we may do something like this 
+#### Basic Example
+
+Let's say you want to create a custom textarea with additional logic beyond the native HTML element:
 
 ```blade
-<!-- ui/textarea.blade.php -->
+<!-- resources/views/components/ui/textarea.blade.php -->
 @props(['name' => ''])
-<div
-    x-data="{ state: null <!-- some fancy logic beyond native textarea -->}"
-    {{ $attributes }}
->
-    <textarea name="{{ $name }}".../>
-<div>
-```
 
-this is a custom component, so we can't use `x-model` or `wire:model` who was invented to be used for a specific form control elements, that's when the `x-modelable` cames into the game
-```blade
-<!-- ui/textarea.blade.php -->
-@props(['name' => ''])
 <div
     x-data="{ state: null }"
-    {+ x-modelable="state" +}
+    {{ $attributes }}
 >
-    <textarea name="{{ $name }}".../>
-<div>
+    <textarea 
+        x-model="state"
+        name="{{ $name }}"
+        class="w-full rounded border..."
+    />
+    <!-- Additional custom UI elements here -->
+</div>
 ```
-with this approach if we do something like this:
-``<x-ui.textarea wire:model="content"/>`` or  ``<x-ui.textarea x-model="content"/>`` it will bind the `state` value in that alpine component to these properties easily.
 
-> this is a good enough feature for simple reusable blade component like textarea, switch..., but one we need more complicated workflows and advanced js needed this approach cames a nightmare and you start lose the controle over the state, that's why we go away from it for advanced components like otp, select....
+The problem? Since this is a custom component, you can't directly use `x-model` or `wire:model` on it—these directives are designed to work with native form elements only.
 
+#### Enter x-modelable
+
+This is where `x-modelable` solves the problem:
+
+```blade
+<!-- resources/views/components/ui/textarea.blade.php -->
+@props(['name' => ''])
+
+<div
+    x-data="{ state: null }"
+    x-modelable="state"
+    {{ $attributes }}
+>
+    <textarea 
+        x-model="state"
+        name="{{ $name }}"
+        class="w-full rounded border..."
+    />
+</div>
+```
+
+Now you can use your custom component exactly like a native input:
+
+```blade
+<!-- With Livewire -->
+<x-ui.textarea wire:model="content" />
+
+<!-- With Alpine -->
+<div x-data="{ content: '' }">
+    <x-ui.textarea x-model="content" />
+</div>
+```
+
+The `x-modelable="state"` directive tells Alpine: "When someone uses `x-model` or `wire:model` on this component, bind it to the `state` property."
+
+#### When x-modelable Isn't Enough
+
+While `x-modelable` works beautifully for simple components (textareas, switches, basic inputs), it becomes **limiting for complex components** that require:
+
+- **Advanced JavaScript logic** (autocomplete, date pickers, sliders)
+- **Multiple internal states** (open/closed dropdown + selected value)
+- **Third-party library integrations** (NoUISlider, Choices.js, etc.)
+- **Complex reactivity patterns** (debouncing, validation, transformation)
+
+For these advanced use cases, you need finer control over state management and synchronization. That's when we move beyond `x-modelable` to **custom entanglement patterns**—which is exactly what this guide will teach you.
+
+> **Rule of thumb:** Use `x-modelable` for simple wrapped inputs. Use custom entanglement (explained below) for components with complex behavior.
 
 ### Advanced Solution 
 Our solution has three layers that work together. This is the foundation you need to build any reactive Blade component:
