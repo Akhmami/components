@@ -1,7 +1,7 @@
 ---
 id: two-way-data-bindings
-title: Master Two-Way Data Binding for Universal TALL Stack Components
-slug: master-two-way-data-binding-universal-tall-stack-components
+title: Livewire + Alpine Data Binding, The Pattern SheafUI Uses
+slug: livewire-and-alpine-data-binding-the-pattern-sheaui-uses
 excerpt: Building Blade components that work seamlessly with both Livewire's wire:model and Alpine's x-model isn't magic? it's a pattern. Learn the exact architecture that we follow at sheafui's work, for building complex component that feels native to livewire or alpine, so you can use by just throwing wire:model or x-model there.
 author: mohamed charrafi
 created_at: 11-12-2025
@@ -21,11 +21,9 @@ category: advanced techniques
 
 @blade
 <x-md.callout title="AI Credits">
-    This article is 70-80% written by hand to speak to you directly in a human, understandable way. The remaining 20-30% consists of refinements by AI (Claude) and grammar corrections, since the SheafUI team are not native English speakers.
+    This article is 80-90% written by hand to speak to you directly in a human, understandable way. The remaining 10-20% consists of refinements by AI (Claude) and grammar corrections, since the SheafUI team are not native English speakers.
 </x-md.callout>
 @endblade
-
-- Here's the problem: you build a beautiful custom select component. It works great with Livewire. Then someone wants to use it in a pure Alpine app, and everything breaks. Or vice versa. You end up maintaining two versions of the same component.
 
 **What if there was a pattern that makes your components work with both frameworks automatically, feeling native to each?**
 
@@ -35,8 +33,8 @@ That's what we're building today: a universal two-way data binding system that s
 - Alpine's `x-model`
 - Pure Alpine apps (no Livewire at all)
 - Hybrid setups (Livewire + Alpine)
-
-> And the user doesn't have to change a single line of code. They just use `wire:model` or `x-model`, and it works.
+ 
+And the user doesn't have to change a single line of code. They just use `wire:model` or `x-model`, and it works.
 
 ## The Problem We're Solving
 
@@ -54,8 +52,43 @@ Let's say you're building a custom toggle component. Users want to use it like t
 
 **The challenge:** How do you make the same Blade component work with both frameworks? These directives (`x-model` and `wire:model`) are intended for specific HTML tags, not custom components. How do you maintain two-way reactivity without creating a mess of conditional logic?
 
-## The Architecture: Three Layers
+## The Solutions 
 
+### Alpine Modelable API
+
+alpine has a cool derictive api called `x-modelable` (you can learn about it at [alpine docs](https://alpinejs.dev/directives/modelable)), that bind a isolated state on inner alpine component (can be blade component) to outer component here is an example, also this is the recomended approach in livewire docs in thier [custom form controls](https://livewire.laravel.com/docs/3.x/forms#custom-form-controls)
+
+in a basic level suppose you want to create a custom textarea with extra logic, so we may do something like this 
+
+```blade
+<!-- ui/textarea.blade.php -->
+@props(['name' => ''])
+<div
+    x-data="{ state: null <!-- some fancy logic beyond native textarea -->}"
+    {{ $attributes }}
+>
+    <textarea name="{{ $name }}".../>
+<div>
+```
+
+this is a custom component, so we can't use `x-model` or `wire:model` who was invented to be used for a specific form control elements, that's when the `x-modelable` cames into the game
+```blade
+<!-- ui/textarea.blade.php -->
+@props(['name' => ''])
+<div
+    x-data="{ state: null }"
+    {+ x-modelable="state" +}
+>
+    <textarea name="{{ $name }}".../>
+<div>
+```
+with this approach if we do something like this:
+``<x-ui.textarea wire:model="content"/>`` or  ``<x-ui.textarea x-model="content"/>`` it will bind the `state` value in that alpine component to these properties easily.
+
+> this is a good enough feature for simple reusable blade component like textarea, switch..., but one we need more complicated workflows and advanced js needed this approach cames a nightmare and you start lose the controle over the state, that's why we go away from it for advanced components like otp, select....
+
+
+### Advanced Solution 
 Our solution has three layers that work together. This is the foundation you need to build any reactive Blade component:
 
 ### Layer 1: The Blade Component (Public API)
