@@ -1,7 +1,7 @@
 ---
 id: two-way-data-bindings
-title: Livewire + Alpine Data Binding, The Pattern SheafUI Uses
-slug: livewire-and-alpine-data-binding-the-pattern-sheaui-uses
+title: Building Reusable TALL Stack Components with Wire:model & X-model
+slug: building-reusable-tall-stack-components-wire-model-x-model
 excerpt: Building Blade components that work seamlessly with both Livewire's wire:model and Alpine's x-model isn't magic? it's a pattern. Learn the exact architecture that we follow at sheafui's work, for building complex component that feels native to livewire or alpine, so you can use by just throwing wire:model or x-model there.
 author: mohamed charrafi
 created_at: 11-12-2025
