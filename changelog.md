@@ -3,7 +3,7 @@
 ## Nevember 17, 2025
 
 **blog:**
-- add first blog post [alpine and livewire state bindings](livewire-and-alpine-data-binding-the-pattern-sheaui-uses)
+- add first blog post [how to use advanced alpine to solve the data bindings prolem](/blog/post/building-reusable-tall-stack-components-with-wire-model-x-model)
 
 ## September 15, 2025
 
