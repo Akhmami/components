@@ -344,8 +344,8 @@ Next, we pass this configuration to our Alpine component:
 
 Here's a full working implementation:
 
-@blade
-<x-md.file file="resources/views/components/ui/toggle.blade.php" open>
+
+```blade
 @props([
     'label' => null,
 ])
@@ -394,10 +394,7 @@ Here's a full working implementation:
         ></span>
     </button>
 </div>
-</x-md.file>
-@endblade
-
----
+```
 
 ### Step 3: The Alpine Component with Dual-Mode Binding
 
