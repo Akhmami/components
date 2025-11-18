@@ -43,7 +43,7 @@
                 if (!prop) return checked;
                 return $entangle(prop, live);
             };
-            
+
             return {
             // ====================================================================
             // STATE INITIALIZATION
@@ -89,7 +89,9 @@
                     // CASE 2: Standalone checkbox with model binding
                     else {
                         // get initial state from Alpine model or (wire:model) bindings
-                        this._checked = this.$root._x_model?.get() ?? false;
+                        if(!this._checked) {
+                            this._checked = this.$root._x_model?.get() ?? false;
+                        }
                     }
                 });
 
