@@ -88,13 +88,13 @@ You can use it outside Livewire with just Alpine (and Blade):
 
 The Select component can trigger JavaScript logic whenever its value changes. Use the `@change` event to listen for changes and use `$event.detail.value` for access the value.
 
-```html
+```blade
 <div x-data="{ country: '' }">
     <x-ui.select 
         class="w-3xs"
         x-model="country"
         placeholder="Choose a country..."
-        @change="console.log($event.detail.value)
+        x-on:change="console.log($event.detail.value)
         >
             <x-ui.select.option value="us">United States</x-ui.select.option>
             <x-ui.select.option value="uk">United Kingdom</x-ui.select.option>
